@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Safety Checkup — SafeSteps</title>
+<meta name="description" content="A quick interactive checklist to review your social media, location sharing, and account security." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Karla:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+<div class="quick-exit-bar">
+  In danger? Leave this site instantly. <button id="quickExitBtn" class="js-quick-exit" type="button">Quick Exit</button>
+</div>
+
+<header class="site-header">
+  <nav class="nav-wrap">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5.5V11c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V5.5L12 2z" fill="white" opacity="0.95"/></svg></span>
+      SafeSteps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../emergency-preparedness.html" class="nav-link">Emergency Prep</a></li>
+      <li><a href="../stories.html" class="nav-link">Stories</a></li>
+      <li><a href="../blog.html" class="nav-link">Being a Woman</a></li>
+      <li><a href="../workshops.html" class="nav-link">Workshops</a></li>
+      <li class="has-dropdown">
+        <a href="../safety.html" class="nav-link">Safety ▾</a>
+        <div class="dropdown">
+          <a href="../safety.html#personal">Personal Safety</a>
+          <a href="../safety.html#online">Online Safety</a>
+          <a href="../safety.html#school">School / College</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="../tools.html" class="nav-link active">Tools ▾</a>
+        <div class="dropdown">
+          <a href="safety-plan.html">Build a Safety Plan</a>
+          <a href="digital-safety-checkup.html">Digital Safety Checkup</a>
+          <a href="what-would-you-do.html">What Would You Do?</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-cta"><a href="safety-plan.html" class="btn btn-primary btn-sm">Get Help Now</a></div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../tools.html">Tools</a> / Digital Safety Checkup</div>
+    <h1>Digital Safety Checkup</h1>
+    <p>Go through this list at your own pace. Your progress is saved only in this browser — nothing is sent anywhere.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="max-width: 780px;">
+    <div style="margin-bottom: 30px;">
+      <div class="progress-track"><div class="progress-fill" id="checkup-progress-fill"></div></div>
+      <p id="checkup-progress-label" style="font-weight:700; color:var(--color-plum);">0 of 0 complete</p>
+    </div>
+
+    <h3>Social media privacy</h3>
+    <div id="checkup-list">
+      <label class="checklist-item" for="c1">
+        <input type="checkbox" id="c1">
+        <span class="cl-text"><strong>My social media accounts are set to private</strong><span>Only approved followers can see your posts and profile.</span></span>
+      </label>
+      <label class="checklist-item" for="c2">
+        <input type="checkbox" id="c2">
+        <span class="cl-text"><strong>I don't accept follow/friend requests from strangers</strong><span>Review your current followers list for anyone you don't actually know.</span></span>
+      </label>
+      <label class="checklist-item" for="c3">
+        <input type="checkbox" id="c3">
+        <span class="cl-text"><strong>My posts don't reveal my real-time location</strong><span>Post about places after you've left, not while you're still there.</span></span>
+      </label>
+
+      <h3 style="margin-top:36px;">Location sharing</h3>
+      <label class="checklist-item" for="c4">
+        <input type="checkbox" id="c4">
+        <span class="cl-text"><strong>I know which apps have access to my location</strong><span>Check your phone's privacy settings for a full list.</span></span>
+      </label>
+      <label class="checklist-item" for="c5">
+        <input type="checkbox" id="c5">
+        <span class="cl-text"><strong>Live location sharing is off by default</strong><span>Only turn it on temporarily, with people you trust, for a specific reason.</span></span>
+      </label>
+      <label class="checklist-item" for="c6">
+        <input type="checkbox" id="c6">
+        <span class="cl-text"><strong>I've checked for unfamiliar Bluetooth trackers (e.g. AirTags) near my belongings</strong><span>Most phones can alert you to an unknown tracker traveling with you.</span></span>
+      </label>
+
+      <h3 style="margin-top:36px;">Account &amp; device security</h3>
+      <label class="checklist-item" for="c7">
+        <input type="checkbox" id="c7">
+        <span class="cl-text"><strong>I use unique, strong passwords for important accounts</strong><span>Especially email, banking, and social media.</span></span>
+      </label>
+      <label class="checklist-item" for="c8">
+        <input type="checkbox" id="c8">
+        <span class="cl-text"><strong>Two-factor authentication is turned on for my email and main accounts</strong><span>This makes it much harder for someone else to log in, even with your password.</span></span>
+      </label>
+      <label class="checklist-item" for="c9">
+        <input type="checkbox" id="c9">
+        <span class="cl-text"><strong>No one else knows my phone passcode or has "Find My" access I didn't approve</strong><span>Check shared device/family tracking settings, especially after a breakup.</span></span>
+      </label>
+      <label class="checklist-item" for="c10">
+        <input type="checkbox" id="c10">
+        <span class="cl-text"><strong>I've reviewed which apps are logged into my accounts</strong><span>Sign out of anything you don't recognize in your account's "active sessions" settings.</span></span>
+      </label>
+    </div>
+
+    <div class="card" style="margin-top: 30px;">
+      <h3>Being harassed or stalked online?</h3>
+      <p>Screenshot everything with dates and usernames before you block. Report the account on the platform, and consider looping in a trusted adult, campus safety, or law enforcement if it continues.</p>
+      <a href="../safety.html#online" class="card-link">More online safety resources</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 style="font-family: var(--font-display); font-size:1.2rem;">SafeSteps</h4>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.9rem;">A student-founded nonprofit for women's safety, solidarity, and support.</p>
+        <div class="hotline-box"><strong>In immediate danger?</strong> Call 911 (US) or your local emergency number.</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../emergency-preparedness.html">Emergency Prep</a></li>
+          <li><a href="../stories.html">Stories</a></li>
+          <li><a href="../blog.html">Being a Woman</a></li>
+          <li><a href="../workshops.html">Workshops</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safety &amp; Tools</h4>
+        <ul>
+          <li><a href="../safety.html">Find a Safe Space</a></li>
+          <li><a href="safety-plan.html">Safety Plan</a></li>
+          <li><a href="digital-safety-checkup.html">Digital Checkup</a></li>
+          <li><a href="what-would-you-do.html">What Would You Do?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hotlines (placeholder)</h4>
+        <ul>
+          <li>National DV Hotline: [1-800-799-7233]</li>
+          <li>RAINN: [1-800-656-4673]</li>
+          <li>Contact us: [hello@safesteps.org]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> SafeSteps. Built with care.</span>
+      <span>This site uses no tracking. Your visits are not logged.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/tools.js"></script>
+</body>
+</html>
