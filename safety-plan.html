@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build a Safety Plan — SafeSteps</title>
+<meta name="description" content="A private, step-by-step safety plan. Nothing you enter leaves your browser." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css" />
+<style>
+  @media print {
+    .site-header, .quick-exit-bar, .site-footer, .plan-actions, .page-hero .breadcrumb { display: none !important; }
+    .page-hero { background: none !important; color: black !important; padding: 10px 0 !important; }
+    .page-hero h1, .page-hero p { color: black !important; }
+    body { background: white !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="quick-exit-bar">
+  In danger? Leave this site instantly. <button id="quickExitBtn" class="js-quick-exit" type="button">Quick Exit</button>
+</div>
+
+<header class="site-header">
+  <nav class="nav-wrap">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5.5V11c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V5.5L12 2z" fill="white" opacity="0.95"/></svg></span>
+      SafeSteps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../emergency-preparedness.html" class="nav-link">Emergency Prep</a></li>
+      <li><a href="../stories.html" class="nav-link">Stories</a></li>
+      <li><a href="../blog.html" class="nav-link">Being a Woman</a></li>
+      <li><a href="../workshops.html" class="nav-link">Workshops</a></li>
+      <li class="has-dropdown">
+        <a href="../safety.html" class="nav-link">Safety ▾</a>
+        <div class="dropdown">
+          <a href="../safety.html#personal">Personal Safety</a>
+          <a href="../safety.html#online">Online Safety</a>
+          <a href="../safety.html#school">School / College</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="../tools.html" class="nav-link active">Tools ▾</a>
+        <div class="dropdown">
+          <a href="safety-plan.html">Build a Safety Plan</a>
+          <a href="digital-safety-checkup.html">Digital Safety Checkup</a>
+          <a href="what-would-you-do.html">What Would You Do?</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-cta"><a href="safety-plan.html" class="btn btn-primary btn-sm">Get Help Now</a></div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../tools.html">Tools</a> / Safety Plan</div>
+    <h1>Build a Safety Plan</h1>
+    <p>Fill this out at your own pace. Everything is saved only in this browser on this device — nothing is uploaded or sent anywhere. Consider using private/incognito mode, and clear it when you're done if others share this device.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="max-width: 780px;">
+    <div class="placeholder-note">
+      <strong>Privacy tip:</strong> If someone might check your browser history, use a private/incognito window for this page, and use the "Clear My Plan" button below when finished.
+    </div>
+
+    <form id="safety-plan-form">
+      <h3>1. Trusted contacts</h3>
+      <label for="contact1">Person I can call anytime</label>
+      <input type="text" id="contact1" name="contact1" placeholder="Name and phone number">
+      <label for="contact2">Backup contact</label>
+      <input type="text" id="contact2" name="contact2" placeholder="Name and phone number">
+      <label for="safeword">A code word to text a friend if I need help without explaining</label>
+      <input type="text" id="safeword" name="safeword" placeholder="e.g. 'Can you send the recipe?'">
+
+      <h3>2. Safe places to go</h3>
+      <label for="place1">Primary safe place</label>
+      <input type="text" id="place1" name="place1" placeholder="e.g. a friend's address, a family member's house">
+      <label for="place2">Backup safe place</label>
+      <input type="text" id="place2" name="place2" placeholder="Address or general area">
+      <label for="transport">How I'd get there</label>
+      <input type="text" id="transport" name="transport" placeholder="e.g. my own car, a rideshare app, a friend picking me up">
+
+      <h3>3. Important documents &amp; items</h3>
+      <div class="field-hint">Check the ones you've prepared, or use this as a to-do list.</div>
+      <label for="docs">Notes on where documents/go-bag are kept</label>
+      <textarea id="docs" name="docs" placeholder="ID, cash, medications, spare keys, important papers..."></textarea>
+
+      <h3>4. If I need to leave quickly</h3>
+      <label for="exitplan">My plan</label>
+      <textarea id="exitplan" name="exitplan" placeholder="What I'll say, what I'll bring, and where I'll go first."></textarea>
+
+      <h3>5. After I'm safe</h3>
+      <label for="afterplan">Who I'll contact and what I'll need</label>
+      <textarea id="afterplan" name="afterplan" placeholder="Hotline, lawyer, counselor, workplace, school..."></textarea>
+
+      <div class="plan-actions" style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 20px;">
+        <button type="button" id="save-plan-btn" class="btn btn-primary">Save My Plan (this browser only)</button>
+        <button type="button" id="print-plan-btn" class="btn btn-secondary">Print / Save as PDF</button>
+        <button type="button" id="clear-plan-btn" class="btn btn-secondary" style="border-color:var(--color-coral); color:var(--color-coral-dark);">Clear My Plan</button>
+      </div>
+      <p id="plan-save-status" style="margin-top:14px; font-size:0.88rem; color:var(--color-ink-soft);"></p>
+    </form>
+
+    <div class="hotline-box" style="background: var(--color-cream-dark); color: var(--color-ink); margin-top: 30px;">
+      <strong style="color: var(--color-plum);">Need to talk to someone now?</strong>
+      National DV Hotline: 1-800-799-7233 · RAINN: 1-800-656-4673 · Emergency: 911
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 style="font-family: var(--font-display); font-size:1.2rem;">SafeSteps</h4>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.9rem;">A student-founded nonprofit for women's safety, solidarity, and support.</p>
+        <div class="hotline-box"><strong>In immediate danger?</strong> Call 911 (US) or your local emergency number.</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../emergency-preparedness.html">Emergency Prep</a></li>
+          <li><a href="../stories.html">Stories</a></li>
+          <li><a href="../blog.html">Being a Woman</a></li>
+          <li><a href="../workshops.html">Workshops</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safety &amp; Tools</h4>
+        <ul>
+          <li><a href="../safety.html">Find a Safe Space</a></li>
+          <li><a href="safety-plan.html">Safety Plan</a></li>
+          <li><a href="digital-safety-checkup.html">Digital Checkup</a></li>
+          <li><a href="what-would-you-do.html">What Would You Do?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hotlines (placeholder)</h4>
+        <ul>
+          <li>National DV Hotline: [1-800-799-7233]</li>
+          <li>RAINN: [1-800-656-4673]</li>
+          <li>Contact us: [hello@safesteps.org]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> SafeSteps. Built with care.</span>
+      <span>This site uses no tracking. Your visits are not logged.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/tools.js"></script>
+</body>
+</html>
