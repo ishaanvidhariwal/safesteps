@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Safety Tools — SafeSteps</title>
+<meta name="description" content="Interactive tools: build a safety plan, run a digital safety checkup, and practice real-life scenarios." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="quick-exit-bar">
+  In danger? Leave this site instantly. <button id="quickExitBtn" class="js-quick-exit" type="button">Quick Exit</button>
+</div>
+
+<header class="site-header">
+  <nav class="nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5.5V11c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V5.5L12 2z" fill="white" opacity="0.95"/></svg></span>
+      SafeSteps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="emergency-preparedness.html" class="nav-link">Emergency Prep</a></li>
+      <li><a href="stories.html" class="nav-link">Stories</a></li>
+      <li><a href="blog.html" class="nav-link">Being a Woman</a></li>
+      <li><a href="workshops.html" class="nav-link">Workshops</a></li>
+      <li class="has-dropdown">
+        <a href="safety.html" class="nav-link">Safety ▾</a>
+        <div class="dropdown">
+          <a href="safety.html#personal">Personal Safety</a>
+          <a href="safety.html#online">Online Safety</a>
+          <a href="safety.html#school">School / College</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="tools.html" class="nav-link active">Tools ▾</a>
+        <div class="dropdown">
+          <a href="tools/safety-plan.html">Build a Safety Plan</a>
+          <a href="tools/digital-safety-checkup.html">Digital Safety Checkup</a>
+          <a href="tools/what-would-you-do.html">What Would You Do?</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-cta"><a href="tools/safety-plan.html" class="btn btn-primary btn-sm">Get Help Now</a></div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Tools</div>
+    <h1>Safety Tools</h1>
+    <p>Three free, private tools — nothing you enter is sent to a server. Everything stays in your own browser.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="6" y="4.5" width="12" height="16" rx="1.5"/><rect x="9" y="2.5" width="6" height="3.5" rx="1"/><line x1="8.5" y1="11" x2="15.5" y2="11"/><line x1="8.5" y1="15" x2="15.5" y2="15"/></svg></div>
+        <h3>Safety Plan</h3>
+        <p>A guided, step-by-step plan covering trusted contacts, safe words, documents, and where to go if you need to leave quickly.</p>
+        <a href="tools/safety-plan.html" class="card-link">Build my plan</a>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
+        <h3>Digital Safety Checkup</h3>
+        <p>A quick interactive checklist covering social media privacy, location sharing, and account security — with a live score.</p>
+        <a href="tools/digital-safety-checkup.html" class="card-link">Start checkup</a>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.2 9a2.8 2.8 0 015.4.9c0 1.9-2.6 2-2.6 3.8"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>What Would You Do?</h3>
+        <p>Real-life scenarios to think through ahead of time, with guidance on smart, safe responses.</p>
+        <a href="tools/what-would-you-do.html" class="card-link">Try a scenario</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 style="font-family: var(--font-display); font-size:1.2rem;">SafeSteps</h4>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.9rem;">A student-founded nonprofit for women's safety, solidarity, and support.</p>
+        <div class="hotline-box"><strong>In immediate danger?</strong> Call 911 (US) or your local emergency number.</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="emergency-preparedness.html">Emergency Prep</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="blog.html">Being a Woman</a></li>
+          <li><a href="workshops.html">Workshops</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safety &amp; Tools</h4>
+        <ul>
+          <li><a href="safety.html">Find a Safe Space</a></li>
+          <li><a href="tools/safety-plan.html">Safety Plan</a></li>
+          <li><a href="tools/digital-safety-checkup.html">Digital Checkup</a></li>
+          <li><a href="tools/what-would-you-do.html">What Would You Do?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hotlines (placeholder)</h4>
+        <ul>
+          <li>National DV Hotline: [1-800-799-7233]</li>
+          <li>RAINN: [1-800-656-4673]</li>
+          <li>Contact us: [hello@safesteps.org]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> SafeSteps. Built with care.</span>
+      <span>This site uses no tracking. Your visits are not logged.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
