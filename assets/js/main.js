@@ -82,19 +82,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* Forms: open the visitor's email app with the answers, addressed to SafeSteps */
-  document.querySelectorAll("form[data-mailto]").forEach((form) => {
-    form.addEventListener("submit", (e) => {
+  /* Forms: sent straight to the SafeSteps inbox through FormSubmit (no mail app needed) */
+  document.querySelectorAll("form[data-form-email]").forEach((form) => {
+    const ok = form.querySelector(".form-success");
+    const fail = form.querySelector(".form-error");
+    const btn = form.querySelector('button[type="submit"]');
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const lines = [];
+      if (ok) ok.style.display = "none";
+      if (fail) fail.style.display = "none";
+      const payload = { _subject: form.dataset.subject || "SafeSteps", _template: "table", _captcha: "false" };
       form.querySelectorAll("input, textarea, select").forEach((el) => {
         const label = form.querySelector('label[for="' + el.id + '"]');
-        if (label && el.value.trim()) lines.push(label.textContent.trim() + ": " + el.value.trim());
+        if (label && el.value.trim()) payload[label.textContent.trim()] = el.value.trim();
       });
-      const href = "mailto:" + form.dataset.mailto + "?subject=" + encodeURIComponent(form.dataset.subject || "SafeSteps") + "&body=" + encodeURIComponent(lines.join("\n\n"));
-      const note = form.querySelector(".form-success");
-      if (note) note.style.display = "block";
-      window.location.href = href;
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/" + form.dataset.formEmail, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok || String(data.success) !== "true") throw new Error("send failed");
+        form.querySelectorAll("input, textarea").forEach((el) => (el.value = ""));
+        if (ok) ok.style.display = "block";
+      } catch (err) {
+        if (fail) fail.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
     });
   });
 
