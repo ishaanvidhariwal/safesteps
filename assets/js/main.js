@@ -82,13 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* Simple contact/request forms with no backend: show a friendly confirmation */
-  document.querySelectorAll("form[data-static-form]").forEach((form) => {
+  /* Forms: open the visitor's email app with the answers, addressed to SafeSteps */
+  document.querySelectorAll("form[data-mailto]").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      const lines = [];
+      form.querySelectorAll("input, textarea, select").forEach((el) => {
+        const label = form.querySelector('label[for="' + el.id + '"]');
+        if (label && el.value.trim()) lines.push(label.textContent.trim() + ": " + el.value.trim());
+      });
+      const href = "mailto:" + form.dataset.mailto + "?subject=" + encodeURIComponent(form.dataset.subject || "SafeSteps") + "&body=" + encodeURIComponent(lines.join("\n\n"));
       const note = form.querySelector(".form-success");
-      form.querySelectorAll("input, textarea, select").forEach((el) => (el.value = ""));
       if (note) note.style.display = "block";
+      window.location.href = href;
     });
   });
 
