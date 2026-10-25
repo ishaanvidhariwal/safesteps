@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Safe Map — SafeSteps</title>
+<meta name="description" content="Police stations, hospitals, metro stations and campuses mapped across Faridabad and the NCR, with community safety check-ins." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4 5.5V11c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V5.5L12 2z' fill='%230a3323'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Safe Map — SafeSteps" />
+<meta property="og:description" content="Police stations, hospitals, metro stations and campuses mapped across Faridabad and the NCR, with community safety check-ins." />
+<meta property="og:image" content="https://ishaanvidhariwal.github.io/safesteps/assets/images/workshop-classroom.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Karla:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="quick-exit-bar">
+  In danger? Leave this site instantly. <button id="quickExitBtn" class="js-quick-exit" type="button">Quick Exit</button>
+</div>
+
+<header class="site-header">
+  <nav class="nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5.5V11c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V5.5L12 2z" fill="white" opacity="0.95"/></svg></span>
+      SafeSteps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="emergency-preparedness.html" class="nav-link">Emergency Prep</a></li>
+      <li><a href="stories.html" class="nav-link">Stories</a></li>
+      <li><a href="blog.html" class="nav-link">Being a Woman</a></li>
+      <li><a href="workshops.html" class="nav-link">Workshops</a></li>
+      <li><a href="safe-map.html" class="nav-link">Safe Map</a></li>
+      <li class="has-dropdown">
+        <a href="safety.html" class="nav-link">Safety ▾</a>
+        <div class="dropdown">
+          <a href="safety.html#personal">Personal Safety</a>
+          <a href="safety.html#online">Online Safety</a>
+          <a href="safety.html#school">School / College</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="tools.html" class="nav-link">Tools ▾</a>
+        <div class="dropdown">
+          <a href="tools/safety-plan.html">Build a Safety Plan</a>
+          <a href="tools/digital-safety-checkup.html">Digital Safety Checkup</a>
+          <a href="tools/what-would-you-do.html">What Would You Do?</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-cta"><a href="tools/safety-plan.html" class="btn btn-primary btn-sm">Get Help Now</a></div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Safe Map</div>
+    <h1>Safe Map: Faridabad &amp; NCR</h1>
+    <p>Staffed, public, well-known places you can walk into if you feel unsafe: police stations, hospitals, metro stations, campuses and malls. Tap one to get directions, or leave a check-in about how it felt.</p>
+  </div>
+</section>
+
+<section class="sm-section">
+  <div class="container">
+
+    <div class="sm-helplines" role="group" aria-label="Emergency numbers (India)">
+      <span class="sm-helplines-label">India helplines</span>
+      <a href="tel:112"><b>112</b> Emergency</a>
+      <a href="tel:1091"><b>1091</b> Women helpline</a>
+      <a href="tel:181"><b>181</b> Mahila helpline</a>
+      <a href="tel:100"><b>100</b> Police</a>
+    </div>
+
+    <div class="sm-honesty">
+      <strong>How to read this map.</strong> Every pin is a real, publicly mapped place from OpenStreetMap (snapshot <span id="sm-snapshot"></span>). "Mapped" does not mean "guaranteed safe", and hours or details can be out of date. The check-ins below are the part that adds real experience: they are saved on your own device for now.
+    </div>
+
+    <div class="sm-stats">
+      <div><span class="sm-stat-num" id="sm-count-far">0</span><span class="sm-stat-label">places in Faridabad</span></div>
+      <div><span class="sm-stat-num" id="sm-count-all">0</span><span class="sm-stat-label">places across NCR</span></div>
+      <div><span class="sm-stat-num" id="sm-count-checkins">0</span><span class="sm-stat-label">your check-ins</span></div>
+    </div>
+
+    <div class="sm-controls">
+      <div class="sm-row">
+        <div class="sm-seg" role="group" aria-label="Region">
+          <button type="button" class="sm-seg-btn active" data-region="far">Faridabad</button>
+          <button type="button" class="sm-seg-btn" data-region="all">All NCR</button>
+        </div>
+        <input type="search" id="sm-search" class="sm-search" placeholder="Search by name, e.g. Sector 15, Badkhal, NIT" aria-label="Search places" />
+        <button type="button" id="sm-locate" class="btn btn-teal btn-sm">Near me</button>
+      </div>
+      <div class="sm-chips" id="sm-chips" role="group" aria-label="Filter by type"></div>
+    </div>
+
+    <div id="sm-nearest" class="sm-nearest" hidden>
+      <h3>Nearest help right now</h3>
+      <div id="sm-nearest-list" class="sm-nearest-list"></div>
+      <p class="sm-privacy">x</p>
+    </div>
+
+    <div class="sm-layout">
+      <div class="sm-map-wrap"><div id="sm-map" role="application" aria-label="Map of safe places"></div></div>
+      <div class="sm-list-wrap">
+        <div class="sm-list-head"><span id="sm-list-count"></span></div>
+        <ul id="sm-list" class="sm-list"></ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<dialog id="sm-dialog" class="sm-dialog">
+  <form method="dialog" id="sm-form">
+    <h3 id="sm-dialog-title">Check in</h3>
+    <p class="sm-dialog-sub">Saved only on this device. Skip anything you'd rather not answer.</p>
+
+    <fieldset><legend>When did you go?</legend>
+      <label class="sm-opt"><input type="radio" name="when" value="Day"> Day</label>
+      <label class="sm-opt"><input type="radio" name="when" value="Evening"> Evening</label>
+      <label class="sm-opt"><input type="radio" name="when" value="Night"> Night</label>
+    </fieldset>
+    <fieldset><legend>Lighting</legend>
+      <label class="sm-opt"><input type="radio" name="light" value="Well lit"> Well lit</label>
+      <label class="sm-opt"><input type="radio" name="light" value="Dim"> Dim</label>
+      <label class="sm-opt"><input type="radio" name="light" value="Dark"> Dark</label>
+    </fieldset>
+    <fieldset><legend>People around</legend>
+      <label class="sm-opt"><input type="radio" name="crowd" value="Busy"> Busy</label>
+      <label class="sm-opt"><input type="radio" name="crowd" value="Some people"> Some people</label>
+      <label class="sm-opt"><input type="radio" name="crowd" value="Empty"> Empty</label>
+    </fieldset>
+    <fieldset><legend>Staff / people helpful?</legend>
+      <label class="sm-opt"><input type="radio" name="staff" value="Helpful"> Helpful</label>
+      <label class="sm-opt"><input type="radio" name="staff" value="Neutral"> Neutral</label>
+      <label class="sm-opt"><input type="radio" name="staff" value="Unhelpful"> Unhelpful</label>
+      <label class="sm-opt"><input type="radio" name="staff" value="n/a"> n/a</label>
+    </fieldset>
+    <fieldset><legend>Overall, how safe did you feel? (1 = not at all, 5 = very)</legend>
+      <div class="sm-scale" id="sm-scale">
+        <label><input type="radio" name="score" value="1"><span>1</span></label>
+        <label><input type="radio" name="score" value="2"><span>2</span></label>
+        <label><input type="radio" name="score" value="3"><span>3</span></label>
+        <label><input type="radio" name="score" value="4"><span>4</span></label>
+        <label><input type="radio" name="score" value="5"><span>5</span></label>
+      </div>
+    </fieldset>
+    <label for="sm-note" class="sm-note-label">Anything others should know? (optional)</label>
+    <textarea id="sm-note" maxlength="280" placeholder="e.g. guard at the gate was helpful, back lane is dark after 8pm"></textarea>
+
+    <div class="sm-dialog-actions">
+      <button type="button" class="btn btn-secondary btn-sm" id="sm-cancel">Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" id="sm-save">Save check-in</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 style="font-family: var(--font-display); font-size:1.2rem;">SafeSteps</h4>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.9rem;">A student-founded initiative for women's safety, solidarity, and support.</p>
+        <div class="hotline-box"><strong>In immediate danger?</strong> Call 112 (India) or your local emergency number.</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="emergency-preparedness.html">Emergency Prep</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="blog.html">Being a Woman</a></li>
+          <li><a href="workshops.html">Workshops</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safety &amp; Tools</h4>
+        <ul>
+          <li><a href="safe-map.html">Safe Map</a></li>
+          <li><a href="safety.html">Find a Safe Space</a></li>
+          <li><a href="tools/safety-plan.html">Safety Plan</a></li>
+          <li><a href="tools/digital-safety-checkup.html">Digital Checkup</a></li>
+          <li><a href="tools/what-would-you-do.html">What Would You Do?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Map data</h4>
+        <ul>
+          <li>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> SafeSteps. Built with care.</span>
+      <span>No analytics or ad trackers on this site.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/places.js"></script>
+<script src="assets/js/safemap.js"></script>
+</body>
+</html>
