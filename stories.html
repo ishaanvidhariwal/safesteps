@@ -107,7 +107,7 @@
   <div class="container text-center">
     <h2>Have a story to share?</h2>
     <p style="max-width:520px; margin:0 auto 26px; color:rgba(255,255,255,0.85);">Your story could be the thing that helps someone else keep going. You can write as "Anonymous". We will never publish your name or story without your clear permission.</p>
-    <form data-mailto="ishaanvi.dhariwal@gmail.com" data-subject="SafeSteps story submission" style="max-width:520px; margin:0 auto; text-align:left; background:rgba(255,255,255,0.06); padding:28px; border-radius:20px;">
+    <form data-form-email="ishaanvi.dhariwal@gmail.com" data-subject="SafeSteps story submission" style="max-width:520px; margin:0 auto; text-align:left; background:rgba(255,255,255,0.06); padding:28px; border-radius:20px;">
       <label for="s-name" style="color:white;">Name (or "Anonymous")</label>
       <input type="text" id="s-name" placeholder="Anonymous">
       <label for="s-email" style="color:white;">Email (optional, kept private)</label>
@@ -115,7 +115,9 @@
       <label for="s-story" style="color:white;">Your story</label>
       <textarea id="s-story" placeholder="Share as much or as little as you'd like..."></textarea>
       <button type="submit" class="btn btn-primary btn-block">Submit Story</button>
-      <p class="form-success" style="display:none; color:#cfe0a8; margin-top:14px; font-size:0.88rem;">Thank you for trusting us with this. Your email app should have opened with your story ready to send. If it did not, write to ishaanvi.dhariwal@gmail.com directly.</p>
+      <p class="form-success" style="display:none; color:#cfe0a8; margin-top:14px; font-size:0.88rem;">Thank you for trusting us with this. Your story has been sent to us.</p>
+      <p class="form-error" style="display:none; color:#f3c0b6; margin-top:14px; font-size:0.88rem;">Sorry, that did not send. Please email us directly at <a href="mailto:ishaanvi.dhariwal@gmail.com" style="color:#f3c0b6;">ishaanvi.dhariwal@gmail.com</a>.</p>
+      <p style="margin-top:12px; font-size:0.74rem; font-family:var(--font-mono); color:rgba(255,255,255,0.6);">Sent to our inbox through FormSubmit. We do not share what you write.</p>
     </form>
   </div>
 </section>
